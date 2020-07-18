@@ -41,4 +41,4 @@ jobs:
         ftp-password: ${{ secrets.SFTP_PASSWORD }}
         # The local folder to copy, defaults to root project folder
         local-dir: ./WebCalToHtml/WebCalToHtml/publish/
-        known-hosts: ${{ secrets.SFTP_KNOWNHOSTS }}
+        git-ftp-args: --insecure
