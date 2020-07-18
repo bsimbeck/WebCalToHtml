@@ -42,3 +42,4 @@ jobs:
         # The local folder to copy, defaults to root project folder
         local-dir: /home/runner/work/WebCalToHtml/WebCalToHtml/WebCalToHtml/WebCalToHtml/bin/Debug/netcoreapp3.1/publish/
         git-ftp-args: --insecure
+      
