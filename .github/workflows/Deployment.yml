@@ -29,7 +29,7 @@ jobs:
     - name: Test
       run: dotnet test ./WebCalToHtml/WebCalToHtml.sln --no-restore --verbosity normal
     - name: Publish
-      run: dotnet publish -p:PublishProfile=./WebCalToHtml/WebCalToHtml/Properties/PublishProfiles/FTPProfile.pubxml
+      run: dotnet publish ./WebCalToHtml/WebCalToHtml.sln -p:PublishProfile=./WebCalToHtml/WebCalToHtml/Properties/PublishProfiles/FTPProfile.pubxml
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
