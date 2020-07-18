@@ -40,5 +40,5 @@ jobs:
         # FTP account password
         ftp-password: ${{ secrets.SFTP_PASSWORD }}
         # The local folder to copy, defaults to root project folder
-        local-dir: ./WebCalToHtml/WebCalToHtml/publish/
+        local-dir: /home/runner/work/WebCalToHtml/WebCalToHtml/WebCalToHtml/WebCalToHtml/bin/Debug/netcoreapp3.1/publish/
         git-ftp-args: --insecure
