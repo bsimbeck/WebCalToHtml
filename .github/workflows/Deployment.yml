@@ -26,18 +26,17 @@ jobs:
       run: dotnet build ./WebCalToHtml/WebCalToHtml.sln --configuration Release --no-restore 
     - name: Test
       run: dotnet test ./WebCalToHtml/WebCalToHtml.sln --no-restore --verbosity normal
-
-  FTP-Deploy-Action:
-    needs: [build]
-    name: FTP-Deploy-Action
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2.1.0
-      with:
-        fetch-depth: 2
-    - name: FTP-Deploy-Action
+    - name: Publish
+      run: dotnet publish -p:PublishProfile=./WebCalToHtml/WebCalToHtml/Properties/PublishProfiles/FTPProfile.pubxml
+    - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        ftp-server: ${{ secrets.FTP_SERVER }}
-        ftp-username: ${{ secrets.FTP_USER }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        # Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/
+        ftp-server: ${{ secrets.SFTP_SERVER }}
+        # FTP account username
+        ftp-username: ${{ secrets.SFTP_USERNAME }}
+        # FTP account password
+        ftp-password: ${{ secrets.SFTP_PASSWORD }}
+        # The local folder to copy, defaults to root project folder
+        local-dir: ./WebCalToHtml/WebCalToHtml/publish/
+        known-hosts: ${{ secrets.SFTP_KNOWNHOSTS }}
